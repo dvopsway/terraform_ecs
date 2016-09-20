@@ -1,0 +1,19 @@
+[
+{
+    	"cpu": 1024,
+    	"memory": 1024,
+	"portMappings": [
+		{
+			"hostPort": 80,
+			"containerPort": 80,
+			"protocol": "tcp"
+		}
+	],
+	"logConfiguration": {
+		"logDriver":"syslog"
+	},
+	"essential": true,
+	"name": "%s",
+	"image": "%s"
+}
+]

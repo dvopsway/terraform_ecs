@@ -11,7 +11,7 @@ terraform plan -var 'access_key=<access_key>' -var 'secret_key=<secret_key>'
 ```
 
 ```
-terraform plan -var 'access_key=<access_key>' -var 'secret_key=<secret_key>'
+terraform apply -var 'access_key=<access_key>' -var 'secret_key=<secret_key>'
 ```
 
 ## Contributing

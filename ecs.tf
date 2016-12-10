@@ -1,3 +1,6 @@
+/**
+ * Launch-configuration for ECS
+ */
 resource "aws_launch_configuration" "ecs" {
   name                 = "${var.microservice_name}-ecs"
   image_id             = "${var.ecs_ami}"
@@ -8,6 +11,9 @@ resource "aws_launch_configuration" "ecs" {
   user_data            = "#!/bin/bash\necho ECS_CLUSTER=${aws_ecs_cluster.microservice.name} > /etc/ecs/ecs.config"
 }
 
+/**
+ * Autoscale group for ECS
+ */
 resource "aws_autoscaling_group" "ecs" {
   name                 = "${var.microservice_name}-microservice"
   vpc_zone_identifier  = ["${aws_subnet.microservice_privatesubnet.0.id}", "${aws_subnet.microservice_privatesubnet.1.id}"]
@@ -24,15 +30,24 @@ resource "aws_autoscaling_group" "ecs" {
   }
 }
 
+/**
+ * ECS Cluster
+ */
 resource "aws_ecs_cluster" "microservice" {
   name = "${var.microservice_name}"
 }
 
+/**
+ * ECS Task definitions
+ */
 resource "aws_ecs_task_definition" "task" {
   family                = "${var.microservice_name}"
   container_definitions = "${format(file("task-definitions/image.json"),"${var.microservice_name}","${var.imagename}")}"
 }
 
+/**
+ * ECS service creation
+ */
 resource "aws_ecs_service" "service" {
   name            = "${var.microservice_name}"
   task_definition = "${aws_ecs_task_definition.task.arn}"

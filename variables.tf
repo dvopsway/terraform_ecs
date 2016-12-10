@@ -21,12 +21,20 @@ variable "az" {
   }
 }
 
+/**
+ * HVM NAT AMI for US-EAST-1
+ * Created: October 29, 2016 at 6:26:48 AM UTC+5:30
+ */
 variable "nat_ami" {
-  default = "ami-311a1a5b"
+  default = "ami-863b6391"
 }
 
+/**
+ * ECS Optimized AMI for US-EAST-1
+ * Version: 2016.09.c
+ */
 variable "ecs_ami" {
-  default = "ami-3d55272a"
+  default = "ami-6df8fe7a"
 }
 
 variable "ecs_instance_type" {
@@ -38,5 +46,5 @@ variable "keyname" {
 }
 
 variable "vpc_cidr" {
-  default = "10.202.0.0/23"
+  default = "10.0.0.0/23"
 }

@@ -1,17 +1,46 @@
 # Terraform ECS
 
-Using this project you can launch your public dockerized images in fully managed HA ECS service.
+Using this terrafom module you can launch your public dockerized images in fully managed HA ECS service.
+
+Following components are launched using this module
+
+1. Highly available VPC with public private subnets, securtity group, Network ACLs, etc.
+2. Necessary IAM policies
+3. Lauch config with autoscaling group
+4. ECS Cluster , task definition and service
+5. ELB Endpoint
 
 ## Usage
 
-Just take a clone of this project, update terraform.tfvars accordingly and then run terraform plan and apply:
+To launch a new environment create your module defintion as per below example.
 
 ```
-terraform plan -var 'access_key=<access_key>' -var 'secret_key=<secret_key>'
+module "magnify" {
+  source            = "github.com/dvopsway/terraform_ecs"
+  access_key        = "xxxxxxxxxxxxxxxxxxxxxxxx"
+  secret_key        = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  microservice_name = "magnify"
+  imagename         = "padmakarojha/magnify"
+  region            = "us-east-1"
+  az = {
+    zone1 = "us-east-1b"
+    zone2 = "us-east-1c"
+  }
+  vpc_cidr = "10.200.50.0/23"
+  key_name = "aws-ops"
+}
 ```
 
+Once done, run terraform plan
+
 ```
-terraform apply -var 'access_key=<access_key>' -var 'secret_key=<secret_key>'
+terraform plan 
+```
+
+Review you plan and then run terraform apply to create the infra
+
+```
+terraform apply
 ```
 
 ## Contributing

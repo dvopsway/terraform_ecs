@@ -10,14 +10,14 @@
  * Usage:
  *
  *      module "magnify" {
- *		  access_key           = "xxxxxxxxxxxxxxxxxxxxxxxx"
- *		  secret_key           = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+ *        access_key           = "xxxxxxxxxxxxxxxxxxxxxxxx"
+ *        secret_key           = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
  *        source               = "github.com/dvopsway/terraform_ecs"
  *        microservice_name    = "magnify"
  *        imagename            = "padmakarojha/magnify"
  *        region               = "us-east-1"
  *        az                   = {
- *         	zone1 = "us-east-1b"
+ *          zone1 = "us-east-1b"
  *          zone2 = "us-east-1c" 
  *        }
  *        vpc_cidr             = "10.200.50.0/23"

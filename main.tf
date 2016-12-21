@@ -10,6 +10,8 @@
  * Usage:
  *
  *      module "magnify" {
+ *		  access_key           = "xxxxxxxxxxxxxxxxxxxxxxxx"
+ *		  secret_key           = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
  *        source               = "github.com/dvopsway/terraform_ecs"
  *        microservice_name    = "magnify"
  *        imagename            = "padmakarojha/magnify"
@@ -65,7 +67,7 @@ variable "ecs_instance_type" {
   default = "t2.medium"
 }
 
-variable "keyname" {
+variable "key_name" {
   default = ""
 }
 

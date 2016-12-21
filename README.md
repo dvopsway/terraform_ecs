@@ -26,8 +26,8 @@ module "magnify" {
     zone1 = "us-east-1b"
     zone2 = "us-east-1c"
   }
-  vpc_cidr = "10.200.50.0/23"
-  key_name = "aws-ops"
+  vpc_cidr = "10.0.0.0/23"
+  key_name = "test_key"
 }
 ```
 

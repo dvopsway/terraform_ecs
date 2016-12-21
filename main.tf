@@ -229,7 +229,7 @@ resource "aws_instance" "microservice_nat" {
   ebs_optimized          = false
   instance_type          = "t2.micro"
   monitoring             = true
-  key_name               = "${var.keyname}"
+  key_name               = "${var.key_name}"
   subnet_id              = "${aws_subnet.microservice_publicsubnet.0.id}"
   vpc_security_group_ids = ["${aws_security_group.microservice_nat_sg.id}"]
   source_dest_check      = false
@@ -526,7 +526,7 @@ resource "aws_launch_configuration" "ecs" {
   name                 = "${var.microservice_name}-ecs"
   image_id             = "${var.ecs_ami}"
   instance_type        = "${var.ecs_instance_type}"
-  key_name             = "${var.keyname}"
+  key_name             = "${var.key_name}"
   security_groups      = ["${aws_security_group.microservice_ecs.id}"]
   iam_instance_profile = "${aws_iam_instance_profile.ecs_instance.name}"
   user_data            = "#!/bin/bash\necho ECS_CLUSTER=${aws_ecs_cluster.microservice.name} > /etc/ecs/ecs.config"

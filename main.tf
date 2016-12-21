@@ -26,7 +26,9 @@
  *
  */
 
-variable "access_key" variable "secret_key" {}
+variable "access_key" {}
+
+variable "secret_key" {}
 
 variable "microservice_name" {
   default = "testing"
